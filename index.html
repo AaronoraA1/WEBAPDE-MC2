@@ -1,20 +1,205 @@
+<!DOCTYPE html>
 <html>
-    <header>
-        <title>VLADIMEME</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    </header>
-    <body>
-        <div class="container-fluid" >
-           <div class = "row">
-                <div class = "col-md-12" style = "background-color: black; color: white"> <h1>VLADIMEME</h1></div>
-               
-           </div>
+	<head>
+
+		<script src="jquery-3.3.1.min.js">
+		</script>
+		<title>
+			VLADIMEME
+		</title>
+        <style>
+            #loginForm{
+                margin:auto;
+                text-align: center;
+                align-items: center;
+            }
+            .logininput{
+               margin-top: 2%;
+               margin-bottom: 2%;
+            }
+            #loginsidebar{
+                z-index: 1;
+                position: absolute;
+                width: 0;
+                height: 100%;
+                overflow-y: hidden;
+                transition-duration: 1s;
+                background-color: #343a40;
+                color: white;
+            }
+            #main-content{
+                width:100%;
+                position:absolute;
+                padding: 15px;
+                transition-duration: 1s;
+            }
+            #registersidebar{
+                z-index: 1;
+                position: absolute;
+                width: 0;
+                height: 100%;
+                overflow-y: hidden;
+                transition-duration: 1s;
+                background-color: #343a40;
+                color: white;
+            }
+            #registerForm{
+                margin:auto;
+                text-align: center;
+                align-items: center;
+            }
+            .registerinput{
+               margin-top: 2%;
+               margin-bottom: 2%;
+            }
+            #wrapper.toggledlogin #loginsidebar{
+                width: 20%;
+            }
+            #wrapper.toggledlogin #registersidebar{
+                width: 0%;
+            }
+             #wrapper.toggledregister #loginsidebar{
+                width: 0%;
+            }
+            #wrapper.toggledregister #registersidebar{
+                width: 20%;
+            }
+            
+            #wrapper.toggledlogin #main-content{
+                padding-left: 20%;
+            }
+            #wrapper.toggledregister #main-content{
+                padding-left: 20%;
+            }
+            
+            
+           
         
-        </div>
-    
-    
-    </body>
+        </style>
+	</head>
+	<body>
+		<header>
+			<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+			</script> 
+			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+			</script> 
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
+			</script>
+		</header>
+		<!-- CONTENT -->
+		<div id="wrapper">
+			<div id="body">
+				<!-- NAVBAR -->
+				<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+					<div class="container-fluid">
+						<!-- LOGO -->
+						<a class="navbar-brand" href="index.html"><img class = "rounded" height="65" src="title-whitebackground.png" width="200"></a> 
+                        <!-- NAVBAR ITEMS -->
+						<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+							<div class="navbar-nav">
+								<a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> <a class="nav-item nav-link" href="#" id="loginbutton">Login</a> <a class="nav-item nav-link" href="#" id="registerbutton">Register</a>
+							</div>
+						</div>
+						<!-- SEARCH BAR -->
+						<form class="form-inline">
+							<input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search"> <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+						</form>
+					</div>
+				</nav>
+            <!-- LOGIN SIDEBAR -->
+			<div id="loginsidebar">
+				<div class="sidebar-nav">
+					<form id="loginForm" name="loginForm">
+                        <span id="loginheader">
+                            <h4>
+                                Login
+                            </h4>
+                        </span>
+                        
+                        
+						<input placeholder="username" class="logininput"> <input placeholder="password" type="password" class="logininput"> <br>
+                        <span id = "loginbuttons"> 
+                            <button class="btn btn-outline-light" type="submit">Login</button>
+                            <button class="btn btn-outline-light" type="submit">Register</button>
+                        </span>
+					</form>
+				</div>
+			</div> 
+                
+                <!-- REGISTER SIDEBAR -->
+			<div id="registersidebar">
+				<div class="sidebar-nav">
+					<form id="registerForm" name="registerForm">
+                        <span id="registerheader">
+                            <h4>
+                                REGISTER
+                            </h4>
+                        </span>
+                        
+                        
+						<input placeholder="username" class="registerinput"> <input placeholder="password" type="password" class="registerinput"> <br>
+                        <span id = "registerbuttons"> 
+                            <button class="btn btn-outline-light" type="submit">Login</button>
+                            <button class="btn btn-outline-light" type="submit">Register</button>
+                        </span>
+					</form>
+				</div>
+			</div>                
+                
+                <!-- MAIN CONTENT -->
+                <div id="main-content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-4">
+							<img height="450" src="simulations.jpg" width="450">
+						</div>
+
+						<div class="col-md-4">
+							<img height="450" src="simulations.jpg" width="450">
+						</div>
+
+						<div class="col-md-4">
+							<img height="450" src="simulations.jpg" width="450">
+						</div>
+					</div>
+				</div>
+                </div>
+			</div>
+		</div>
+		<script>
+		          $("#loginbutton").click(function (e){
+		                               e.preventDefault
+                                    if($("#wrapper").hasClass("toggledregister")){
+		                               $("#wrapper").removeClass("toggledregister")
+                                       $("#wrapper").addClass("toggledlogin")
+                                        }
+                                    else if($("#wrapper").hasClass("toggledlogin")){
+                                        $("#wrapper").removeClass("toggledlogin")
+                                    }
+                                    else{
+                                        $("#wrapper").addClass("toggledlogin")
+                                    }
+                                    
+		                               });
+                                
+                                       
+            
+                  $("#registerbutton").click(function (e){
+		                               e.preventDefault
+		                               if($("#wrapper").hasClass("toggledlogin")){
+                                           $("#wrapper").removeClass("toggledlogin")
+                                           $("#wrapper").addClass("toggledregister")
+                                       }
+                                        else if($("#wrapper").hasClass("toggledregister")){
+                                        $("#wrapper").removeClass("toggledregister")
+                                    }
+                                       else{
+                                            $("#wrapper").addClass("toggledregister")
+                                       }
+		                               
+                                       });
+            
+		</script>
+	</body>
 </html>
