@@ -1,0 +1,67 @@
+  #loginForm{
+                margin:auto;
+                text-align: center;
+                align-items: center;
+            }
+            .logininput{
+               margin-top: 2%;
+               margin-bottom: 2%;
+            }
+            #loginsidebar{
+                z-index: 1;
+                position: absolute;
+                width: 0;
+                height: 100%;
+                overflow-y: hidden;
+                transition-duration: 1s;
+                background-color: #343a40;
+                color: white;
+            }
+            #main-content{
+                width:100%;
+                position:absolute;
+                padding: 15px;
+                transition-duration: 1s;
+            }
+            #registersidebar{
+                z-index: 1;
+                position: absolute;
+                width: 0;
+                height: 100%;
+                overflow-y: hidden;
+                transition-duration: 1s;
+                background-color: #343a40;
+                color: white;
+            }
+            #registerForm{
+                margin:auto;
+                text-align: center;
+                align-items: center;
+            }
+            .registerinput{
+               margin-top: 2%;
+               margin-bottom: 2%;
+            }
+            #wrapper.toggledlogin #loginsidebar{
+                width: 20%;
+            }
+            #wrapper.toggledlogin #registersidebar{
+                width: 0%;
+            }
+             #wrapper.toggledregister #loginsidebar{
+                width: 0%;
+            }
+            #wrapper.toggledregister #registersidebar{
+                width: 20%;
+            }
+            
+            #wrapper.toggledlogin #main-content{
+                padding-left: 20%;
+            }
+            #wrapper.toggledregister #main-content{
+                padding-left: 20%;
+            }
+            
+            
+           
+        

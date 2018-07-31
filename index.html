@@ -7,75 +7,9 @@
 		<title>
 			VLADIMEME
 		</title>
-        <style>
-            #loginForm{
-                margin:auto;
-                text-align: center;
-                align-items: center;
-            }
-            .logininput{
-               margin-top: 2%;
-               margin-bottom: 2%;
-            }
-            #loginsidebar{
-                z-index: 1;
-                position: absolute;
-                width: 0;
-                height: 100%;
-                overflow-y: hidden;
-                transition-duration: 1s;
-                background-color: #343a40;
-                color: white;
-            }
-            #main-content{
-                width:100%;
-                position:absolute;
-                padding: 15px;
-                transition-duration: 1s;
-            }
-            #registersidebar{
-                z-index: 1;
-                position: absolute;
-                width: 0;
-                height: 100%;
-                overflow-y: hidden;
-                transition-duration: 1s;
-                background-color: #343a40;
-                color: white;
-            }
-            #registerForm{
-                margin:auto;
-                text-align: center;
-                align-items: center;
-            }
-            .registerinput{
-               margin-top: 2%;
-               margin-bottom: 2%;
-            }
-            #wrapper.toggledlogin #loginsidebar{
-                width: 20%;
-            }
-            #wrapper.toggledlogin #registersidebar{
-                width: 0%;
-            }
-             #wrapper.toggledregister #loginsidebar{
-                width: 0%;
-            }
-            #wrapper.toggledregister #registersidebar{
-                width: 20%;
-            }
-            
-            #wrapper.toggledlogin #main-content{
-                padding-left: 20%;
-            }
-            #wrapper.toggledregister #main-content{
-                padding-left: 20%;
-            }
-            
-            
-           
         
-        </style>
+        <link type="text/css" rel ="stylesheet" href="style.css">
+
 	</head>
 	<body>
 		<header>
@@ -121,7 +55,6 @@
 						<input placeholder="username" class="logininput"> <input placeholder="password" type="password" class="logininput"> <br>
                         <span id = "loginbuttons"> 
                             <button class="btn btn-outline-light" type="submit">Login</button>
-                            <button class="btn btn-outline-light" type="submit">Register</button>
                         </span>
 					</form>
 				</div>
@@ -139,8 +72,7 @@
                         
                         
 						<input placeholder="username" class="registerinput"> <input placeholder="password" type="password" class="registerinput"> <br>
-                        <span id = "registerbuttons"> 
-                            <button class="btn btn-outline-light" type="submit">Login</button>
+                        <span id = "registerbuttons">
                             <button class="btn btn-outline-light" type="submit">Register</button>
                         </span>
 					</form>
@@ -152,6 +84,7 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-4">
+                            <!-- ADD POST HERE -->
 							<img height="450" src="simulations.jpg" width="450">
 						</div>
 
@@ -167,39 +100,6 @@
                 </div>
 			</div>
 		</div>
-		<script>
-		          $("#loginbutton").click(function (e){
-		                               e.preventDefault
-                                    if($("#wrapper").hasClass("toggledregister")){
-		                               $("#wrapper").removeClass("toggledregister")
-                                       $("#wrapper").addClass("toggledlogin")
-                                        }
-                                    else if($("#wrapper").hasClass("toggledlogin")){
-                                        $("#wrapper").removeClass("toggledlogin")
-                                    }
-                                    else{
-                                        $("#wrapper").addClass("toggledlogin")
-                                    }
-                                    
-		                               });
-                                
-                                       
-            
-                  $("#registerbutton").click(function (e){
-		                               e.preventDefault
-		                               if($("#wrapper").hasClass("toggledlogin")){
-                                           $("#wrapper").removeClass("toggledlogin")
-                                           $("#wrapper").addClass("toggledregister")
-                                       }
-                                        else if($("#wrapper").hasClass("toggledregister")){
-                                        $("#wrapper").removeClass("toggledregister")
-                                    }
-                                       else{
-                                            $("#wrapper").addClass("toggledregister")
-                                       }
-		                               
-                                       });
-            
-		</script>
+        <script src= "scripts.js"></script>
 	</body>
 </html>
