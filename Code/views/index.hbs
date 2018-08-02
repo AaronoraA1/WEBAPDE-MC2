@@ -53,11 +53,12 @@
 
 			<div id="loginsidebar">
 				<div class="sidebar-nav">
-					<form id="loginForm" name="loginForm">
+					<form id="loginForm" name="loginForm" action = "register" method="post">
 						<span id="loginheader"></span>
 
 						<h4><span id="loginheader">Login</span>
 						</h4>
+    
 						<span id="loginheader"></span> <input class="logininput" placeholder="username"> <input class="logininput" placeholder="password" type="password"><br>
 						<span id="loginbuttons"><button class="btn btn-outline-light" type="submit"><span id="loginbuttons"><span id="loginbuttons"><span id="loginbuttons">Login</span></span></span></button></span>
 					</form>
@@ -68,13 +69,18 @@
 
 			<div id="registersidebar">
 				<div class="sidebar-nav">
-					<form id="registerForm" name="registerForm">
+					<form id="registerForm" action = "register" name="register" method= "post">
 						<span id="registerheader"></span>
 
-						<h4><span id="registerheader">REGISTER</span>
-						</h4>
-						<span id="registerheader"></span> <input class="registerinput" placeholder="username"> <input class="registerinput" placeholder="password" type="password"><br>
-						<span id="registerbuttons"><button class="btn btn-outline-light" type="submit"><span id="registerbuttons"><span id="registerbuttons"><span id="registerbuttons">Register</span></span></span></button></span>
+						<h4><span id="registerheader">REGISTER</span></h4>
+						<span id="registerheader"></span>
+                        
+                        <input class="registerinput" placeholder="username" type ="text" name = "username"> 
+                        <input class="registerinput" placeholder="password" type="password" name="password"><br>
+						<span id="registerbuttons">
+                        <input  type="submit" class="btn btn-outline-light" value="register">
+                        </span>
+                       
 					</form>
 				</div>
 			</div>
@@ -233,7 +239,7 @@
 					</div>
 
 
-					<div class="modal-body"><img height="100%" src="simulations.jpg" width="100%">
+					<div class="modal-body"><img height="100%" src="../public/css/simulations.jpg" width="100%">
 					</div>
 
 
