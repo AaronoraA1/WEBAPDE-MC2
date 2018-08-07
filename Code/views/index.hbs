@@ -37,10 +37,18 @@
 
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav">
-							<a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> <a class="nav-item nav-link" href="#" id="loginbutton">Login</a> <a class="nav-item nav-link" href="#" id="registerbutton">Register</a>
+                            <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> <a class="nav-item nav-link" id="loginbutton">Login</a> <a class="nav-item nav-link" id="registerbutton">Register</a> 
 						</div>
 					</div>
+                    
+                    <!-- WELCOME, "username" -->
+                    
+                    <div class = "form-inline" >
+                        <span class = 'navbar-text' style = "padding-right:5% ; padding-left: 5% text-align: 'center'">Welcome, Guest</span>
+                    </div>
+                    
 					<!-- SEARCH BAR -->
+                    
 
 
 					<form class="form-inline">
@@ -50,17 +58,18 @@
 			</nav>
 			<!-- LOGIN SIDEBAR -->
 
-
 			<div id="loginsidebar">
 				<div class="sidebar-nav">
-					<form id="loginForm" name="loginForm" action = "register" method="post">
+					<form id="loginForm" action = "login" name="login" method= "POST">
 						<span id="loginheader"></span>
 
-						<h4><span id="loginheader">Login</span>
-						</h4>
-    
-						<span id="loginheader"></span> <input class="logininput" placeholder="username"> <input class="logininput" placeholder="password" type="password"><br>
-						<span id="loginbuttons"><button class="btn btn-outline-light" type="submit"><span id="loginbuttons"><span id="loginbuttons"><span id="loginbuttons">Login</span></span></span></button></span>
+						<h4><span id="loginheader">LOGIN</span></h4>
+						<span id="loginheader"></span>
+                        <input class="logininput" placeholder="username" type ="text" name = "username"> 
+                        <input class="logininput" placeholder="password" type="password" name="password"><br>
+						<span id="registerbuttons">
+                        <input  type="submit" class="btn btn-outline-light" value="login">
+                        </span>
 					</form>
 				</div>
 			</div>
@@ -69,18 +78,16 @@
 
 			<div id="registersidebar">
 				<div class="sidebar-nav">
-					<form id="registerForm" action = "register" name="register" method= "post">
+					<form id="registerForm" action = "register" name="register" method= "POST">
 						<span id="registerheader"></span>
 
 						<h4><span id="registerheader">REGISTER</span></h4>
 						<span id="registerheader"></span>
-                        
                         <input class="registerinput" placeholder="username" type ="text" name = "username"> 
                         <input class="registerinput" placeholder="password" type="password" name="password"><br>
 						<span id="registerbuttons">
                         <input  type="submit" class="btn btn-outline-light" value="register">
                         </span>
-                       
 					</form>
 				</div>
 			</div>

@@ -14,6 +14,9 @@ const urlencoder = bodyparser.urlencoded({
 })
 
 
+var currentUserName;
+
+
 mongoose.Promise = global.Promise
 mongoose.connect ("mongodb://localhost:27017/Memes",{
      useNewUrlParser: true
@@ -25,10 +28,18 @@ app.use(express.static(__dirname+'/public'));
 
 /* ROUTES */
 app.get("/" , urlencoder, (req,res) =>{
-    res.render("index.hbs")
+   res.render("index.hbs")
+})
+
+app.get("/profile", urlencoder, (req,res) =>{
+    console.log("showing profile for " + currentUserName)
+    res.render("profile.hbs", {
+        username: currentUserName
+    })  
 })
 
 app.post("/register", urlencoder, (req,res) =>{
+    console.log("register")
     var username = req.body.username
     var password = req.body.password
     
@@ -36,12 +47,37 @@ app.post("/register", urlencoder, (req,res) =>{
     
     newUser.save().then((user)=>{
         console.log( user.username + "Logged")
-        res.render("index.hbs")
+        currentUserName = username
+        res.redirect("/profile")
     }), (err)=>{
         console.log("MALIII")
         
     }
 
+})
+
+app.post("/login", urlencoder, (req,res) => {
+    var username = req.body.username
+    
+    console.log("login")
+
+    currentUserName = username;
+    
+    User.find().then((currentUserName)=>{
+       res.redirect("/profile")
+    }, (err)=>{
+        console.log("could not find user")
+        res.redirect("/")
+    })
+    
+    
+})
+
+app.get("/logout", urlencoder, (req,res) => {
+    console.log( currentUserName+ " has logged out")
+    currentUserName = null;
+    res.redirect("/")
+    
 })
 
 
