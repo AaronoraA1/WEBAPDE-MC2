@@ -1,16 +1,77 @@
+
 const mongoose = require("mongoose")
+
+
+
+
+
+var tagSchema = mongoose.Schema({
+    
+    name : {
+        type: String,
+        required : true
+    },
+//    title : String,
+    author : {
+        type: Array(),
+        limit: 1,
+        items: userSchema
+    },
+    post:{
+        type: Array(),
+        limit: 1,
+        items: postSchema
+    }  
+
+})
+
+
+var userSchema = mongoose.Schema({    
+    username : {
+        type : String,
+        required : true,
+        unique : true
+    },
+    password : {
+        type : [],
+        required: true
+    },    
+    post:{
+        type: Array,
+        items: postSchema
+    }
+    
+})
 
 
 var postSchema = mongoose.Schema({
     
     title : {
-        type : Date,
+        type : String,
         required : true
     },
-    url: String, 
-//    title : String,
-    author : String,
-    tags : [{type: mongoose.Schema.Types.ObjectId, ref: 'tag'}]
+    
+    url: {
+        type : String,
+        required : true
+    },
+    author : {
+        type: Array,
+        items: userSchema
+    },
+    
+    description:{
+        type : String
+    },
+    
+    privacy: {
+        type: Boolean,
+    },
+    
+    tags: {
+        type: Array,
+        items: tagSchema
+    }
 })
 
 var Post = mongoose.model("post", postSchema)

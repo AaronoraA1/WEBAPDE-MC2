@@ -34,14 +34,124 @@ app.use(express.static(__dirname+'/public'));
 
 /* ROUTES */
 app.get("/" , urlencoder, (req,res) =>{
+    
+    console.log("-------------------------------------------------------------")
+    
+    var i
+    User.find().then((user)=>{
+     console.log("----USER----")
+        console.log(user)
+  
+    }, (err)=>{
+        console.log("could not find user")
+    })
+    
+    Post.find().then((post)=>{
+        console.log("----POST----")
+        console.log(post)
+
+    }, (err)=>{
+        console.log("could not find user")
+    })
+    
+    Tag.find().then((tag)=>{
+        console.log("----TAG----")
+        console.log(tag)
+
+    }, (err)=>{
+        console.log("could not find user")
+    })
+
+        console.log("-------------------------------------------------------------")
+
+    
+    
    res.render("index.hbs")
 })
 
-app.get("/profile", urlencoder, (req,res) =>{
-    console.log("showing profile for " + currentUserName)
+app.get("/profile", urlencoder, (req,res) =>{    
+    console.log("-------------------------------------------------------------")
+    var i
+    User.find().then((user)=>{
+  
+        console.log("----USER----")
+        console.log(user)
+
+    }, (err)=>{
+        console.log("could not find user")
+    })
+    
+    Post.find().then((post)=>{
+        console.log("----POST----")
+        console.log(post)
+    }, (err)=>{
+        console.log("could not find user")
+    })
+    
+    Tag.find().then((tag)=>{
+        console.log("----TAG----")
+        console.log(tag)
+
+    }, (err)=>{
+        console.log("could not find user")
+    })
+
+ console.log("-------------------------------------------------------------")
+
+    
+
     res.render("profile.hbs", {
         username: currentUserName.username
     })  
+})
+
+app.post("/delete" , urlencoder, (req,res)=>{
+    
+    Post.deleteAll();
+    
+})
+
+app.post("/upload", urlencoder, (req,res) =>{
+    
+    var title = req.body.title
+    var url = req.body.url
+    
+    
+   var userThis = req.body.username
+    
+    
+    
+    var newPost = new Post({title, url})
+   
+    newPost.author = currentUserName
+    
+//    User.findOne({username : currentUserName.username}).then((user)=>{
+//        console.log("FUCK YOU" + user)
+//        user.post.push(newPost)
+//        user.save(done)
+//    }, (err)=>{
+//        console.log("could not find user")
+//    })
+    
+    console.log("FUCK U " + currentUserName)
+   User.findOneAndUpdate({
+        username : currentUserName.username
+    }, {
+        $push:{post: {newPost}}
+    }).then((user)=>{
+        console.log("UPDATED")
+    }, ()=>{
+        console.log("error")
+    })
+    
+    console.log(newPost.author)
+    newPost.save().then((post)=>{
+    }), (err)=>{
+        console.log("MALIII")
+    }
+
+     res.redirect("/profile")
+    
 })
 
 app.post("/register", urlencoder, (req,res) =>{
@@ -64,6 +174,7 @@ app.post("/register", urlencoder, (req,res) =>{
 
 })
 
+
 app.post("/login", urlencoder, (req,res) => {
     var userName = req.body.username
 
@@ -76,13 +187,9 @@ app.post("/login", urlencoder, (req,res) => {
         console.log("could not find user")
         res.redirect("/")
     })
-    
-    
 })
 
 app.get("/logout", urlencoder, (req,res) => {
-    
-    
     console.log( currentUserName+ " has logged out")
     currentUserName = null;
     res.redirect("/")

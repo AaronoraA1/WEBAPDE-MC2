@@ -1,5 +1,54 @@
 const mongoose = require("mongoose")
 
+
+var postSchema = mongoose.Schema({
+    
+    title : {
+        type : String,
+        required : true
+    },
+    
+    url: {
+        type : String,
+        required : true
+    },
+    author : {
+        type: Array,
+        items: userSchema
+    },
+    
+    description:{
+        type : String
+    },
+    
+    privacy: {
+        type: Boolean,
+    },
+    
+    tags: {
+        type: Array,
+        items: tagSchema
+    }
+})
+
+var userSchema = mongoose.Schema({    
+    username : {
+        type : String,
+        required : true,
+        unique : true
+    },
+    password : {
+        type : [],
+        required: true
+    },    
+    post:{
+        type: Array,
+        items: postSchema
+    }
+    
+})
+
+
 var tagSchema = mongoose.Schema({
     
     name : {
@@ -8,13 +57,9 @@ var tagSchema = mongoose.Schema({
     },
 //    title : String,
     author : {
-        
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'user',
-        required: true
-    
-    
-    
+        type: Array(),
+        limit: 1,
+        items: userSchema
 }
 })
 

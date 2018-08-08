@@ -37,7 +37,9 @@
 
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav">
-                            <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> <a class="nav-item nav-link" href="upload" id="uploadbutton">Upload a meme</a> <a class="nav-item nav-link" href="logout" id="logoutbutton">Logout</a> 
+                            <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> <a class="nav-item nav-link" data-target="#uploadModal" data-toggle="modal" id="uploadbutton">Upload a meme</a> <a class="nav-item nav-link" href="logout" id="logoutbutton">Logout</a> 
+
+                            <button class="btn btn-outline-light my-2 my-sm-0" action = "delete" method = "POST">DELETE(for demo purposes)</button>
 						</div>
 					</div>
                     
@@ -50,9 +52,6 @@
                     </div>
                     
 					<!-- SEARCH BAR -->
-                    
-
-
 					<form class="form-inline">
 						<input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search"> <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
 					</form>
@@ -227,6 +226,32 @@
 		</div>
 	</div>
     
+     <!-- UPLOAD MODAL MODAL -->
+        <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="uploadModal" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 class="modal-title" id="exampleModalCenterTitle">UPLOAD LE MEME</h2>
+						<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+					</div>
+                    
+					<div class="modal-body"> 
+                    <form id="uploadForm" action = "upload" name="upload" method= "POST">
+                        <input type="hidden" value="{{username}}" name="username">
+                        <input  placeholder="username" type ="text" name = "title"><br> 
+                        <input  placeholder="password" type="text" name="url"><br>        
+                        <div class="modal-footer">
+                             <input  type="submit" class="btn btn-dark" value="upload">
+
+                        </div>
+                    
+					</form>
+                        
+					</div>
+
+				</div>
+			</div>
+		</div>
 	
     <script>
        $( "#logoutbutton" ).click(function() {
