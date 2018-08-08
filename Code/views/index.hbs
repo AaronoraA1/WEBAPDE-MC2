@@ -5,8 +5,10 @@
 
 	<script src="../js/jquery-3.3.1.min.js">
 	</script>
+    <!--
     <script src="../js/scripts.js" type="text/javascript">
 	</script>
+    -->
 	<title>VLADIMEME</title>
 	<link href="../css/style.css" type="text/css" rel = "stylesheet">
 </head>
@@ -37,14 +39,14 @@
 
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav">
-                            <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> <a class="nav-item nav-link" id="loginbutton">Login</a> <a class="nav-item nav-link" id="registerbutton">Register</a> 
+                            <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> <a class="nav-item nav-link" id="loginbutton"  data-target="#loginModal" data-toggle="modal">Login</a> <a class="nav-item nav-link" id="registerbutton" data-target="#registerModal" data-toggle="modal">Register</a> 
 						</div>
 					</div>
                     
                     <!-- WELCOME, "username" -->
                     
                     <div class = "form-inline" >
-                        <span class = 'navbar-text' style = "padding-right:5% ; padding-left: 5% text-align: 'center'">Welcome, Guest</span>
+                        <span class = 'navbar-text' style = "padding-left: 10%; width:170px;">Welcome, Guest</span>
                     </div>
                     
 					<!-- SEARCH BAR -->
@@ -58,39 +60,9 @@
 			</nav>
 			<!-- LOGIN SIDEBAR -->
 
-			<div id="loginsidebar">
-				<div class="sidebar-nav">
-					<form id="loginForm" action = "login" name="login" method= "POST">
-						<span id="loginheader"></span>
-
-						<h4><span id="loginheader">LOGIN</span></h4>
-						<span id="loginheader"></span>
-                        <input class="logininput" placeholder="username" type ="text" name = "username"> 
-                        <input class="logininput" placeholder="password" type="password" name="password"><br>
-						<span id="registerbuttons">
-                        <input  type="submit" class="btn btn-outline-light" value="login">
-                        </span>
-					</form>
-				</div>
-			</div>
+			
 			<!-- REGISTER SIDEBAR -->
 
-
-			<div id="registersidebar">
-				<div class="sidebar-nav">
-					<form id="registerForm" action = "register" name="register" method= "POST">
-						<span id="registerheader"></span>
-
-						<h4><span id="registerheader">REGISTER</span></h4>
-						<span id="registerheader"></span>
-                        <input class="registerinput" placeholder="username" type ="text" name = "username"> 
-                        <input class="registerinput" placeholder="password" type="password" name="password"><br>
-						<span id="registerbuttons">
-                        <input  type="submit" class="btn btn-outline-light" value="register">
-                        </span>
-					</form>
-				</div>
-			</div>
 			<!-- MAIN CONTENT -->
 
 
@@ -100,8 +72,6 @@
 						<div class="col-md-6">
 							<!-- ADD POST HERE -->
 							<!-- FIRST PLACEHOLDER -->
-
-
 							<div class="post" data-target="#exampleModalCenter" data-toggle="modal">
 								<div class="memeSpans">
 									<div class="memeHeader">
@@ -135,7 +105,7 @@
 							<!-- SECOND PLACEHOLDER -->
 
 
-							<div class="post">
+							<div class="post" data-target="#exampleModalCenter" data-toggle="modal">
 								<div class="memeSpans">
 									<div class="memeHeader">
 
@@ -166,13 +136,13 @@
 					<!-- SECOND ROW -->
 
 
-					<div class="row">
+					<div class="row" >
 						<div class="col-md-6">
 							<!-- ADD POST HERE -->
 							<!-- THIRD PLACEHOLDER -->
 
 
-							<div class="post">
+							<div class="post" data-target="#exampleModalCenter" data-toggle="modal">
 								<div class="memeSpans">
 									<div class="memeHeader">
 
@@ -205,7 +175,7 @@
 							<!-- FOURTH PLACEHOLDER -->
 
 
-							<div class="post">
+							<div class="post" data-target="#exampleModalCenter" data-toggle="modal">
 								<div class="memeSpans">
 									<div class="memeHeader">
 								
@@ -237,16 +207,18 @@
 			</div>
 		</div>
 		<!--   MODALS!  -->
+        
+        <!-- POST MODAL --> 
 		<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="exampleModalCenter" role="dialog" tabindex="-1">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h2 class="modal-title" id="exampleModalCenterTitle">When you are late for the deadline but you are friends with the professor</h2>
+						<h4 class="modal-title" id="exampleModalCenterTitle">When you are late for the deadline but you are friends with the professor</h4>
 						<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
 					</div>
 
 
-					<div class="modal-body"><img height="100%" src="../public/css/simulations.jpg" width="100%">
+					<div class="modal-body"><img height="100%" src="../css/simulations.jpg" width="100%">
 					</div>
 
 
@@ -256,6 +228,65 @@
 						<h5><span class="tagSpan">#filipino #bakit</span>
 						</h5>
 					</div>
+				</div>
+			</div>
+		</div>
+        
+        
+        
+        
+    <!-- LOGIN MODAL --> 
+    <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="loginModal" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 class="modal-title" id="exampleModalCenterTitle">LOGIN MA DUDE</h2>
+						<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+					</div>
+                    
+					<div class="modal-body"> 
+                        <form id="loginForm" action = "login" name="login" method= "POST">
+                        <input class="logininput" placeholder="username" type ="text" name = "username"> 
+                        <input class="logininput" placeholder="password" type="password" name="password"><br>
+						<span id="registerbuttons">
+                        </span>
+                            
+                            <div class= "modal-footer">
+                                 <input  type="submit" class="btn btn-dark" value="login">
+
+                            </div>
+					</form>
+                        
+					</div>
+
+				</div>
+			</div>
+		</div>
+        <!-- REGISTER MODAL -->
+        <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="registerModal" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 class="modal-title" id="exampleModalCenterTitle">REGISTER KA TOTSKI</h2>
+						<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+					</div>
+                    
+					<div class="modal-body"> 
+                    <form id="registerForm" action = "register" name="register" method= "POST">
+                        <input class="registerinput" placeholder="username" type ="text" name = "username"> 
+                        <input class="registerinput" placeholder="password" type="password" name="password"><br>
+						<span id="registerbuttons">
+                        </span>
+                        
+                        <div class="modal-footer">
+                             <input  type="submit" class="btn btn-dark" value="register">
+
+                        </div>
+                    
+					</form>
+                        
+					</div>
+
 				</div>
 			</div>
 		</div>

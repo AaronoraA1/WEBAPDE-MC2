@@ -37,14 +37,16 @@
 
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav">
-                            <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> <a class="nav-item nav-link" href="upload" id="loginbutton">Upload a meme</a> <a class="nav-item nav-link" href="logout" id="registerbutton">Logout</a> 
+                            <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> <a class="nav-item nav-link" href="upload" id="uploadbutton">Upload a meme</a> <a class="nav-item nav-link" href="logout" id="logoutbutton">Logout</a> 
 						</div>
 					</div>
+                    
+                    
                     
                     <!-- WELCOME, "username" -->
                     
                     <div class = "form-inline" >
-                        {{#if username}}<span class = 'navbar-text' style = "padding-right:5% ; padding-left: 5%;text-align: 'center'">Welcome, {{username}}</span> {{else}} <span class = 'navbar-text' style = "padding-right:5% ; padding-left: 5%;text-align: 'center'">Welcome, Guest</span>{{/if}}
+                        {{#if username}} <span class = 'navbar-text' style = "padding-left: 10%; width:170px;">Welcome, {{username}}</span> {{else}}  <span class = 'navbar-text' style = "padding-left: 10%; width:170px;">Welcome, Guest</span>{{/if}}
                     </div>
                     
 					<!-- SEARCH BAR -->
@@ -58,14 +60,13 @@
 			</nav>
 			<!-- MAIN CONTENT -->
 
+			
 			<div id="main-content">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-6">
 							<!-- ADD POST HERE -->
 							<!-- FIRST PLACEHOLDER -->
-
-
 							<div class="post" data-target="#exampleModalCenter" data-toggle="modal">
 								<div class="memeSpans">
 									<div class="memeHeader">
@@ -99,7 +100,7 @@
 							<!-- SECOND PLACEHOLDER -->
 
 
-							<div class="post">
+							<div class="post" data-target="#exampleModalCenter" data-toggle="modal">
 								<div class="memeSpans">
 									<div class="memeHeader">
 
@@ -130,13 +131,13 @@
 					<!-- SECOND ROW -->
 
 
-					<div class="row">
+					<div class="row" >
 						<div class="col-md-6">
 							<!-- ADD POST HERE -->
 							<!-- THIRD PLACEHOLDER -->
 
 
-							<div class="post">
+							<div class="post" data-target="#exampleModalCenter" data-toggle="modal">
 								<div class="memeSpans">
 									<div class="memeHeader">
 
@@ -169,7 +170,7 @@
 							<!-- FOURTH PLACEHOLDER -->
 
 
-							<div class="post">
+							<div class="post" data-target="#exampleModalCenter" data-toggle="modal">
 								<div class="memeSpans">
 									<div class="memeHeader">
 								
@@ -201,6 +202,7 @@
 			</div>
 		</div>
 		<!--   MODALS!  -->
+        <!-- POST MODAL --> 
 		<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="exampleModalCenter" role="dialog" tabindex="-1">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
@@ -210,7 +212,7 @@
 					</div>
 
 
-					<div class="modal-body"><img height="100%" src="../public/css/simulations.jpg" width="100%">
+					<div class="modal-body"><img height="100%" src="../css/simulations.jpg" width="100%">
 					</div>
 
 
@@ -224,6 +226,12 @@
 			</div>
 		</div>
 	</div>
+    
 	
+    <script>
+       $( "#logoutbutton" ).click(function() {
+        alert( "Logged Out!" );
+        });
+    </script>
 </body>
 </html>

@@ -4,8 +4,14 @@ const mongoose = require("mongoose")
 const hbs = require("hbs")
 const bodyparser = require("body-parser")
 const path = require("path")
-const {Post} = require("./model/post.js")
-const {User} = require("./model/user.js")
+//const{Schema} = require("./model/scheme.js")
+const{Tag} = require(("./model/tag.js"))
+const{Post} = require(("./model/post.js"))
+const{User} = require(("./model/user.js"))
+ 
+
+
+
 
 /* SETUP */
 const app = express()
@@ -34,7 +40,7 @@ app.get("/" , urlencoder, (req,res) =>{
 app.get("/profile", urlencoder, (req,res) =>{
     console.log("showing profile for " + currentUserName)
     res.render("profile.hbs", {
-        username: currentUserName
+        username: currentUserName.username
     })  
 })
 
@@ -42,12 +48,14 @@ app.post("/register", urlencoder, (req,res) =>{
     console.log("register")
     var username = req.body.username
     var password = req.body.password
+   
+ 
     
-    var newUser = new User({username, password})
+    var newUser = new User({username,password})
     
     newUser.save().then((user)=>{
         console.log( user.username + "Logged")
-        currentUserName = username
+        currentUserName = user
         res.redirect("/profile")
     }), (err)=>{
         console.log("MALIII")
@@ -57,13 +65,12 @@ app.post("/register", urlencoder, (req,res) =>{
 })
 
 app.post("/login", urlencoder, (req,res) => {
-    var username = req.body.username
-    
-    console.log("login")
+    var userName = req.body.username
 
-    currentUserName = username;
-    
-    User.find().then((currentUserName)=>{
+    console.log("login")
+    User.findOne({username : userName}).then((user)=>{
+       currentUserName = user
+       console.log("YA BOI's USERNAME " + currentUserName.username)
        res.redirect("/profile")
     }, (err)=>{
         console.log("could not find user")
@@ -74,6 +81,8 @@ app.post("/login", urlencoder, (req,res) => {
 })
 
 app.get("/logout", urlencoder, (req,res) => {
+    
+    
     console.log( currentUserName+ " has logged out")
     currentUserName = null;
     res.redirect("/")
