@@ -120,7 +120,6 @@ app.post("/delete" , urlencoder, (req,res)=>{
     
    
     User.findOne({username : currentUserName.username}).then((user)=>{
-        console.log("FUCK YOU" + user)
         user.post.remove({_id: Id})
         user.save(user)
     }, (err)=>{
@@ -144,22 +143,23 @@ app.post("/edit" , urlencoder, (req,res)=>{
     
     var Id = req.body.id 
    
-   
-//   Post.findOneAndUpdate({
-//       _id : Id
-//   }, newPost).then(()=>{
-//       res.redirect("/profile")
-//   })
-//    
-//
-//    Post.findOne({_id : Id}).then((post)=>{
-//        post.update({}, { $set: {title:newtitle}})
-//        post.save(post)
-//    }, (err)=>{
-//        console.log("could not find user")
-//    })
-        
-    Post.update({_id:Id}, {title:newtitle})
+    
+    Post.findOne({_id : req.body.id }).then((post)=>{
+        if(post){
+            post.title = newtitle
+            post.save()
+        }
+    }, (err)=>{
+        console.log("could not find user")
+    })
+    
+     User.findOne({username : currentUserName.username}).then((user)=>{
+        user.post.title = newtitle
+        user.save()
+    }, (err)=>{
+        console.log("could not find user")
+    })
+    
    
     res.redirect("/profile")
 })
@@ -169,8 +169,8 @@ app.post("/upload", urlencoder, (req,res) =>{
     var title = req.body.title
     var url = req.body.url
     
-    
    var userThis = req.body.username
+   //var newtags[] = req.body.tags.split("#")
     
     
     
@@ -193,6 +193,33 @@ app.post("/upload", urlencoder, (req,res) =>{
     }
 
      res.redirect("/profile")
+    
+})
+
+app.post("/search", urlencoder, (req,res) =>{
+    
+    
+    var queryPost = Post
+    
+    
+    console.log("---------SEARCH BY USER----------")
+    
+    Post.find({author}).then((post)=>{
+        console.log(post)
+        console.log(post.author)
+       if(post.author.username == req.body.search){
+           console.log(post)
+          }
+    }, (err)=>{
+        console.log("could not find user")
+    })
+    
+    console.log("---------SEARCH BY TITLE----------")
+    Post.find({title: req.body.search}).then((post)=>{
+        console.log(post)
+    }, (err)=>{
+        console.log("could not find user")
+    })
     
 })
 

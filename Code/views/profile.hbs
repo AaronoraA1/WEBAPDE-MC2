@@ -53,8 +53,8 @@
                     </div>
                     
 					<!-- SEARCH BAR -->
-					<form class="form-inline">
-						<input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search"> <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+					<form class="form-inline" action = "search" method = "post">
+						<input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search" name="search"> <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
 					</form>
 				</div>
 			</nav>
@@ -244,7 +244,10 @@
                         </div>
                         <div class="seperator" style="margin-top:3% ">
                             <input placeholder="url" type="text" name="url" style="width:80%">
-                        </div>      
+                        </div> 
+                        <div class="seperator" style="margin-top:3% ">
+                            <input placeholder="tags" type="text" name="tags" style="width:80%">
+                        </div> 
                         <div class="modal-footer border border-dark">
                              <input  type="submit" class="btn btn-light" value="upload">
 

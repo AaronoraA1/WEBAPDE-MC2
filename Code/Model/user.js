@@ -8,10 +8,15 @@ var tagSchema = mongoose.Schema({
     },
 //    title : String,
     author : {
-        type: Array(),
+        type: Array,
         limit: 1,
         items: userSchema
-}
+},
+  post:{
+        type: Array,
+        limit: 1,
+        items: postSchema
+    }    
 })
 
 var postSchema = mongoose.Schema({
