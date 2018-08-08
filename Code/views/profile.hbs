@@ -32,14 +32,15 @@
 			<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 				<div class="container-fluid">
 					<!-- LOGO -->
-					<a class="navbar-brand" href="index.html"><img class="rounded" height="65" src="../css/title-whitebackground.png" width="200"></a> <!-- NAVBAR ITEMS -->
+					<a class="navbar-brand" href="/profile"><img class="rounded" height="65" src="../css/title-whitebackground.png" width="200"></a> <!-- NAVBAR ITEMS -->
 
 
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav">
                             <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> <a class="nav-item nav-link" data-target="#uploadModal" data-toggle="modal" id="uploadbutton">Upload a meme</a> <a class="nav-item nav-link" href="logout" id="logoutbutton">Logout</a> 
-
-                            <button class="btn btn-outline-light my-2 my-sm-0" action = "delete" method = "POST">DELETE(for demo purposes)</button>
+                                <button type="submit"class="btn btn-outline-light my-2 my-sm-0" data-target="#deleteModal" data-toggle="modal">DELETE(for demo purposes)</button>
+                            <button type="submit"class="btn btn-outline-light my-2 my-sm-0" data-target="#editModal" data-toggle="modal">EDIT Post(for demo purposes)</button>
+                            
 						</div>
 					</div>
                     
@@ -229,19 +230,23 @@
      <!-- UPLOAD MODAL MODAL -->
         <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="uploadModal" role="dialog" tabindex="-1">
 			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h2 class="modal-title" id="exampleModalCenterTitle">UPLOAD LE MEME</h2>
-						<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                <div class="modal-content bg-dark border border-dark">
+                    <div class="modal-header border border-dark ">
+						<h2 class="modal-title text-white" id="exampleModalCenterTitle">UPLOAD LE MEME</h2>
+						<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true" style="color:white">&times;</span></button>
 					</div>
                     
 					<div class="modal-body"> 
                     <form id="uploadForm" action = "upload" name="upload" method= "POST">
                         <input type="hidden" value="{{username}}" name="username">
-                        <input  placeholder="username" type ="text" name = "title"><br> 
-                        <input  placeholder="password" type="text" name="url"><br>        
-                        <div class="modal-footer">
-                             <input  type="submit" class="btn btn-dark" value="upload">
+                        <div class="seperator">
+                            <input placeholder="title" type ="text" name = "title" style="width:80%"> 
+                        </div>
+                        <div class="seperator" style="margin-top:3% ">
+                            <input placeholder="url" type="text" name="url" style="width:80%">
+                        </div>      
+                        <div class="modal-footer border border-dark">
+                             <input  type="submit" class="btn btn-light" value="upload">
 
                         </div>
                     
@@ -252,6 +257,67 @@
 				</div>
 			</div>
 		</div>
+    
+    <!-- DELETE MODAL -->
+    <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="deleteModal" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-dark border border-dark">
+                    <div class="modal-header border border-dark ">
+						<h2 class="modal-title text-white" id="exampleModalCenterTitle">DELETE LE MEME</h2>
+						<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true" style="color:white">&times;</span></button>
+					</div>
+                    
+					<div class="modal-body"> 
+                    <form id="deleteForm" action = "delete" name="delete" method= "POST">
+                        
+                        <div class="seperator" style="margin-top:3% ">
+                            <input placeholder="url" type="text" name="id" id = "id" style="width:80%">
+                        </div>      
+                        <div class="modal-footer border border-dark">
+                             <input  type="submit" class="btn btn-light" value="delete">
+
+                        </div>
+                    
+					</form>
+                        
+					</div>
+
+				</div>
+			</div>
+		</div>
+    
+    <!-- EDIT MODAL -->
+    <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="editModal" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-dark border border-dark">
+                    <div class="modal-header border border-dark ">
+						<h2 class="modal-title text-white" id="exampleModalCenterTitle">EDIT LE MEME</h2>
+						<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true" style="color:white">&times;</span></button>
+					</div>
+                    
+					<div class="modal-body"> 
+                    <form id="editForm" action = "edit" name="edit" method= "POST">
+                        <input type="hidden" value="{{username}}" name="username">
+                        <div class="seperator">
+                            <input placeholder="title" type ="text" name = "title" style="width:80%"> 
+                        </div>
+                        <div class="seperator" style="margin-top:3% ">
+                            <input placeholder="id" type="text" name="id" id = "id" style="width:80%">
+                        </div>      
+                        <div class="modal-footer border border-dark">
+                             <input  type="submit" class="btn btn-light" value="edit">
+
+                        </div>
+                    
+					</form>
+                        
+					</div>
+
+				</div>
+			</div>
+		</div>
+    
+    
 	
     <script>
        $( "#logoutbutton" ).click(function() {

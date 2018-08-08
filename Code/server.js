@@ -106,11 +106,64 @@ app.get("/profile", urlencoder, (req,res) =>{
 })
 
 app.post("/delete" , urlencoder, (req,res)=>{
+    console.log("we gon delete boys")
     
-    Post.deleteAll();
+    var Id = req.body.id 
     
+    
+    var title = req.body.title
+    var url = req.body.url
+    
+    
+   var userThis = req.body.username
+    
+    
+   
+    User.findOne({username : currentUserName.username}).then((user)=>{
+        console.log("FUCK YOU" + user)
+        user.post.remove({_id: Id})
+        user.save(user)
+    }, (err)=>{
+        console.log("could not find user")
+    })
+    
+    
+    
+    Post.remove({_id : Id}).then(() =>{
+        console.log("DELETED")
+    })
+    
+    res.redirect("/profile")
 })
 
+app.post("/edit" , urlencoder, (req,res)=>{
+    console.log("/EDIT")
+    
+    
+    var newtitle = req.body.title
+    
+    var Id = req.body.id 
+   
+   
+//   Post.findOneAndUpdate({
+//       _id : Id
+//   }, newPost).then(()=>{
+//       res.redirect("/profile")
+//   })
+//    
+//
+//    Post.findOne({_id : Id}).then((post)=>{
+//        post.update({}, { $set: {title:newtitle}})
+//        post.save(post)
+//    }, (err)=>{
+//        console.log("could not find user")
+//    })
+        
+    Post.update({_id:Id}, {title:newtitle})
+   
+    res.redirect("/profile")
+})
+         
 app.post("/upload", urlencoder, (req,res) =>{
     
     var title = req.body.title
@@ -124,27 +177,16 @@ app.post("/upload", urlencoder, (req,res) =>{
     var newPost = new Post({title, url})
    
     newPost.author = currentUserName
-    
-//    User.findOne({username : currentUserName.username}).then((user)=>{
-//        console.log("FUCK YOU" + user)
-//        user.post.push(newPost)
-//        user.save(done)
-//    }, (err)=>{
-//        console.log("could not find user")
-//    })
-    
-    console.log("FUCK U " + currentUserName)
-   User.findOneAndUpdate({
-        username : currentUserName.username
-    }, {
-        $push:{post: {newPost}}
-    }).then((user)=>{
-        console.log("UPDATED")
-    }, ()=>{
-        console.log("error")
+
+
+    User.findOne({username : currentUserName.username}).then((user)=>{
+        //console.log("FUCK YOU" + user)
+        user.post.push(newPost)
+        user.save(user)
+    }, (err)=>{
+        console.log("could not find user")
     })
-    
-    console.log(newPost.author)
+  
     newPost.save().then((post)=>{
     }), (err)=>{
         console.log("MALIII")

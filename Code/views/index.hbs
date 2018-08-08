@@ -34,7 +34,7 @@
 			<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 				<div class="container-fluid">
 					<!-- LOGO -->
-					<a class="navbar-brand" href="index.html"><img class="rounded" height="65" src="../css/title-whitebackground.png" width="200"></a> <!-- NAVBAR ITEMS -->
+					<a class="navbar-brand" href="/"><img class="rounded" height="65" src="../css/title-whitebackground.png" width="200"></a> <!-- NAVBAR ITEMS -->
 
 
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -236,60 +236,72 @@
         
         
     <!-- LOGIN MODAL --> 
-    <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="loginModal" role="dialog" tabindex="-1">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h2 class="modal-title" id="exampleModalCenterTitle">LOGIN MA DUDE</h2>
-						<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-					</div>
+        <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="loginModal" role="dialog" tabindex="-1">
+			<div class="modal-dialog " role="document">
+            <div class="modal-content bg-dark border border-dark">
+              <div class="modal-header border border-dark">
+                <h2 class="modal-title text-white" id="exampleModalLabel">LOG IN</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true"  style="color:white">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="loginForm" action ="login" name="login" method= "POST">
+                    <h5 class="text-white text-left" id="exampleModalLabel">Username</h5>
+                    <div class="seperator">
+                        <input placeholder="username" type ="text" name = "username" style="width:100%"> 
+                    </div>
                     
-					<div class="modal-body"> 
-                        <form id="loginForm" action = "login" name="login" method= "POST">
-                        <input class="logininput" placeholder="username" type ="text" name = "username"> 
-                        <input class="logininput" placeholder="password" type="password" name="password"><br>
-						<span id="registerbuttons">
-                        </span>
-                            
-                            <div class= "modal-footer">
-                                 <input  type="submit" class="btn btn-dark" value="login">
-
-                            </div>
-					</form>
-                        
-					</div>
-
-				</div>
-			</div>
-		</div>
-        <!-- REGISTER MODAL -->
+                    <h5 class="text-white text-left" id="exampleModalLabel">Password</h5>
+                    <div class="seperator" style="margin-top:0% "> 
+                        <input placeholder="password" type="password" name="password" style="width:100%">
+                    </div>
+                    <span id="registerbuttons">
+                    </span>
+                  
+                  <div class="modal-footer border border-dark">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="Log In!">
+                  </div>
+                </form>
+                </div>
+                
+            </div>
+          </div>
+        </div>
+        <!-- NEW REGISTER MODAL -->
         <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="registerModal" role="dialog" tabindex="-1">
 			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h2 class="modal-title" id="exampleModalCenterTitle">REGISTER KA TOTSKI</h2>
-						<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-					</div>
+            <div class="modal-content bg-dark border border-dark">
+              <div class="modal-header border border-dark">
+                <h2 class="modal-title text-white" id="exampleModalLabel">Register</h2>
+                <button type="button" class="close white" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" style="color:white">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="registerForm" action="register" name="register" method= "POST">
+                    <h5 class="text-white text-left" id="exampleModalLabel">Username</h5>
+                    <div class="seperator">
+                        <input placeholder="username" type ="text" name = "username" style="width:100%"> 
+                    </div>
                     
-					<div class="modal-body"> 
-                    <form id="registerForm" action = "register" name="register" method= "POST">
-                        <input class="registerinput" placeholder="username" type ="text" name = "username"> 
-                        <input class="registerinput" placeholder="password" type="password" name="password"><br>
-						<span id="registerbuttons">
-                        </span>
-                        
-                        <div class="modal-footer">
-                             <input  type="submit" class="btn btn-dark" value="register">
-
-                        </div>
-                    
-					</form>
-                        
-					</div>
-
-				</div>
-			</div>
-		</div>
+                    <h5 class="text-white text-left" id="exampleModalLabel">Password</h5>
+                    <div class="seperator" style="margin-top:0% "> 
+                        <input placeholder="password" type="password" name="password" style="width:100%">
+                    </div>
+                    <span id="registerbuttons">
+                    </span>
+                
+                  <div class="modal-footer border border-dark">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="Register!">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
 	</div>
 	
 </body>
